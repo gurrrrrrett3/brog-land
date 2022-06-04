@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <title>Brog.Land | Your home for web utilities</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Brog.Land</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor01"
+          aria-controls="navbarColor01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#"
+                >Home
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shortener">Link Shortener</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Image Host</a
+              >
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/image/upload">Upload an image</a>
+                <a class="dropdown-item" href="/image/delete">Delete an image</a>
+                <a class="dropdown-item" href="/image/view/meta">View Image Meta</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                >Other Utilities</a
+              >
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/">Nothing here yet!</a>
+              </div>
+            </li>
+          </ul>
+          <div class="d-flex">
+            <!--Login-->
+            <div class="mr-auto">
+              <a id="login-button" class="btn btn-outline-light" href="/login">Login</a>
+              <!--Logged in dropdown-->
+                  <a
+                hidden
+                id="logged-in"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                href="#"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                ></a
+              >
+              <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="/auth/logout">Logout</a>
+              </div>
+            </li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </body>
+
+  <script src="/public/js/bootstrap.bundle.min.js"></script>
+  <script src="/public/js/bundle.js"></script>
+</html>
