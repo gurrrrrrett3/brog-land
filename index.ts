@@ -11,39 +11,39 @@ import imageRouter from "./routers/image";
 
 import SessionManager from './modules/auth/sessionManager';
 
-const app = express();
+  const app = express();
 
-app.use(cookieParser());
+  app.use(cookieParser());
 
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer({
-    key: fs.readFileSync('auth/key.pem'),
-    cert: fs.readFileSync('auth/cert.pem'),
-})
+  const httpServer = http.createServer(app);
+  const httpsServer = https.createServer({
+      key: fs.readFileSync('auth/key.pem'),
+      cert: fs.readFileSync('auth/cert.pem'),
+  })
 
-//Routes    
-app.use('/auth', authRouter);
-app.use('/image', imageRouter);
+  //Routes    
+  app.use('/auth', authRouter);
+  app.use('/image', imageRouter);
 
-app.use("/public", express.static(path.resolve('./public/')));
+  app.use("/public", express.static(path.resolve('./public/')));
 
-//Auth middleware
-app.use((req, res, next) => {
-    if (req.cookies.session) {
-      const session = SessionManager.checkSession(req.cookies.session);
-      if (session) {
-        res.cookie("session", session.session, {
-          //1 week
-          expires: new Date(session.lastUsed + 1000 * 60 * 60 * 24 * 7),
-        });
-      } else {
-          //session expired or invalid
-            res.clearCookie("session");
-      }
+  //Auth middleware
+  app.use((req, res, next) => {
+      if (req.cookies.session) {
+        const session = SessionManager.checkSession(req.cookies.session);
+        if (session) {
+          res.cookie("session", session.session, {
+            //1 week
+            expires: new Date(session.lastUsed + 1000 * 60 * 60 * 24 * 7),
+          });
+        } else {
+            //session expired or invalid
+              res.clearCookie("session");
+        }
 
-    } 
-    next();
-  });
+      } 
+      next();
+    });
 
 app.get('/', (req, res) => {
     res.sendFile(path.resolve("./public/html/index.html"));
